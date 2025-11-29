@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MemeFemboys | Telegram-канал</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #ff69b4;
+            --secondary-color: #ffb6c1;
+            --accent-color: #fff0f5;
+            --text-color: #333;
+            --light-text: #fff;
+            --section-bg: #fff5f7;
+        }
+
+        body {
+            background: linear-gradient(135deg, #fff5f7 0%, #ffeef2 100%);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--light-text);
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(255, 105, 180, 0.2);
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1rem;
+            animation: pulse 2s infinite;
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+            transition: transform 0.5s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05) rotate(5deg);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            animation: fadeIn 2s ease-out;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .section {
+            background-color: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--secondary-color);
+            animation: fadeInUp 0.8s ease-out;
+            transition: transform 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+        }
+
+        .section-title {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--secondary-color);
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title i {
+            margin-right: 10px;
+        }
+
+        .channels-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .channel-card {
+            background: linear-gradient(135deg, var(--accent-color) 0%, white 100%);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid var(--secondary-color);
+            animation: fadeIn 1s ease-out;
+        }
+
+        .channel-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 105, 180, 0.15);
+        }
+
+        .channel-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .channel-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .channel-description {
+            margin-bottom: 1.5rem;
+            color: var(--text-color);
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(255, 105, 180, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(255, 105, 180, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .rules-list {
+            list-style-type: none;
+        }
+
+        .rules-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            align-items: flex-start;
+            animation: slideInLeft 0.5s ease-out;
+        }
+
+        .rules-list li:last-child {
+            border-bottom: none;
+        }
+
+        .rule-icon {
+            color: var(--primary-color);
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        .rule-penalty {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-left: 10px;
+            font-weight: bold;
+        }
+
+        .rules-category {
+            margin-bottom: 2rem;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .rules-category h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .age-warning {
+            background-color: var(--accent-color);
+            border-left: 4px solid var(--primary-color);
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            border-radius: 0 8px 8px 0;
+            animation: pulse 2s infinite;
+        }
+
+        footer {
+            background: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .footer-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Анимации */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @media (max-width: 768px) {
+            .channels-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="https://s3.iimg.su/s/29/gxQVfQcxSAwnaQ0R5VImzDBRwedS46W4hhicctPZ.png" alt="MemeFemboys Logo" class="logo">
+        </div>
+        <h1>MemeFemboys</h1>
+        <p class="subtitle">Добро пожаловать в наше уютное сообщество! Присоединяйтесь к нашим каналам и чатам</p>
+    </header>
+
+    <div class="container">
+        <section class="section">
+            <h2 class="section-title"><i class="fas fa-star"></i> Наши каналы</h2>
+            <div class="channels-grid">
+                <div class="channel-card">
+                    <div class="channel-icon">
+                        <i class="fab fa-telegram"></i>
+                    </div>
+                    <h3 class="channel-name">MemeFemboys (TGK)</h3>
+                    <p class="channel-description">Основной канал с мемами и контентом</p>
+                    <a href="https://t.me/memefemboys" class="btn" target="_blank">Перейти</a>
+                </div>
+                <div class="channel-card">
+                    <div class="channel-icon">
+                        <i class="fab fa-telegram"></i>
+                    </div>
+                    <h3 class="channel-name">MemeFem (TGCh)</h3>
+                    <p class="channel-description">Второй канал с дополнительным контентом</p>
+                    <a href="https://t.me/memefem" class="btn" target="_blank">Перейти</a>
+                </div>
+                <div class="channel-card">
+                    <div class="channel-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3 class="channel-name">Чатик</h3>
+                    <p class="channel-description">Общайтесь с участниками сообщества</p>
+                    <a href="https://t.me/memefemboyschat" class="btn" target="_blank">Присоединиться</a>
+                </div>
+                <div class="channel-card">
+                    <div class="channel-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="channel-name">Буст</h3>
+                    <p class="channel-description">Поддержите наш канал через буст</p>
+                    <a href="https://t.me/boost/memefemboys" class="btn" target="_blank">Бустнуть</a>
+                </div>
+                <div class="channel-card">
+                    <div class="channel-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="channel-name">Предложка</h3>
+                    <p class="channel-description">Предложите свой контент для публикации</p>
+                    <a href="https://t.me/femboysuggestionsbot" class="btn btn-outline">Написать</a>
+                </div>
+                <div class="channel-card">
+                    <div class="channel-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h3 class="channel-name">NSFW контент</h3>
+                    <p class="channel-description">Только для взрослых участников</p>
+                    <a href="https://t.me/memefemboys/2142" class="btn btn-outline">Перейти (18+)</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><i class="fas fa-gavel"></i> Правила чата</h2>
+            <div class="age-warning">
+                <i class="fas fa-exclamation-circle"></i> <strong>ВХОД В ЧАТ ТОЛЬКО С 16-ТИ ЛЕТ!</strong>
+            </div>
+            
+            <div class="rules-category">
+                <h3>Общие правила</h3>
+                <ul class="rules-list">
+                    <li><i class="fas fa-user rule-icon"></i> Вход в чат с 16 лет</li>
+                </ul>
+            </div>
+            
+            <div class="rules-category">
+                <h3>Мут (30 минут)</h3>
+                <ul class="rules-list">
+                    <li><i class="fas fa-comment-slash rule-icon"></i> Неадекватное/грубое поведение без причины</li>
+                    <li><i class="fas fa-eye rule-icon"></i> Демонстрация 18+ контента без спойлера</li>
+                    <li><i class="fas fa-ban rule-icon"></i> Гомофобия/трансофобия/и т.д. и т.п.</li>
+                    <li><i class="fas fa-exclamation-triangle rule-icon"></i> Оскорбление родителей <span class="rule-penalty">Мут на 1 час + варн на 3 дня</span></li>
+                    <li><i class="fas fa-bullhorn rule-icon"></i> Спам <span class="rule-penalty">Мут от 10 до 30 минут</span></li>
+                </ul>
+            </div>
+            
+            <div class="rules-category">
+                <h3>Мут (1 час)</h3>
+                <ul class="rules-list">
+                    <li><i class="fas fa-fire rule-icon"></i> Развитие ссоры</li>
+                </ul>
+            </div>
+            
+            <div class="rules-category">
+                <h3>Пред (до 3х)</h3>
+                <ul class="rules-list">
+                    <li><i class="fas fa-user-slash rule-icon"></i> Буллинг, оскорбление и унижение новичков без причины</li>
+                    <li><i class="fas fa-skull rule-icon"></i> Склонение участников к селфхарму и суициду</li>
+                    <li><i class="fas fa-user-secret rule-icon"></i> Попытка уклонения от бана</li>
+                    <li><i class="fas fa-users-slash rule-icon"></i> Попытка рейдерства/использование чата с целью оскорбления контингента</li>
+                    <li><i class="fas fa-fist-raised rule-icon"></i> Постоянная провокация конфликтов</li>
+                    <li><i class="fas fa-ad rule-icon"></i> Реклама <span class="rule-penalty">пред на 7 дней</span></li>
+                    <li><i class="fas fa-link rule-icon"></i> Ссылки (на тг каналы)</li>
+                    <li><i class="fas fa-church rule-icon"></i> Религия</li>
+                    <li><i class="fas fa-landmark rule-icon"></i> Политика</li>
+                    <li><i class="fas fa-megaphone rule-icon"></i> Пропаганда</li>
+                    <li><i class="fas fa-robot rule-icon"></i> Подозрительная активность, ( по типу спам командами ириса ) <span class="rule-penalty">2 преда сразу до 3-х дней включительно</span></li>
+                    <li><i class="fas fa-smile rule-icon"></i> Оскорбительные реакции во время мута <span class="rule-penalty"> варн на 10 дней</span></li>
+                    <li><i class="fas fa-hand-holding-usd rule-icon"></i> Манипуляция участниками чата с целью обмана <span class="rule-penalty">2 варна сразу на 7 дней</span></li>
+                    <li><i class="fas fa-search rule-icon"></i> Запрещены сообщения по типу: "Ищу ..., пиши я"</li>
+                    <li><i class="fas fa-swastika rule-icon"></i> Нацистская и фашистская символика</li>
+                </ul>
+            </div>
+            
+            <div class="rules-category">
+                <h3>Бан (сразу)</h3>
+                <ul class="rules-list">
+                    <li><i class="fas fa-exclamation-circle rule-icon"></i> Угрозы (расправой и доксом в том числе)</li>
+                    <li><i class="fas fa-ban rule-icon"></i> Шок контент (расчлененка, Child corn)</li>
+                    <li><i class="fas fa-mask rule-icon"></i> Выдача себя за другое лицо</li>
+                </ul>
+            </div>
+            
+            <div class="rules-category">
+                <h3>Дополнительные запреты</h3>
+                <ul class="rules-list">
+                    <li><i class="fas fa-times-circle rule-icon"></i> Также в чате запрещены: гомофобия, трансфобия, нацизм, фашизм, фэтфобия, эйджизм, садизм и другие взгляды и идеологии, которые могут быть оскорбительными для участников чата. <span class="rule-penalty">Наказания варьируются от степени нарушения</span></li>
+                </ul>
+            </div>
+            
+            <div class="rules-category">
+                <h3>Об администрации</h3>
+                <ul class="rules-list">
+                    <li><i class="fas fa-shield-alt rule-icon"></i> Администратор не обязан предоставлять информацию, оправдываться или доказывать нарушителю его провинность.</li>
+                    <li><i class="fas fa-comment rule-icon"></i> Администраторами допустимо использование устных предупреждений прежде, чем выдать наказание.</li>
+                    <li><i class="fas fa-trash-alt rule-icon"></i> Администрация вправе удалять контент, нарушающий атмосферу чата, даже если он формально не подпадает под правила ( с объяснением причины в ЛС со скрином ).</li>
+                    <li><i class="fas fa-user-friends rule-icon"></i> Вести себя адекватно с первоходами ( Намеренно не начинать конфликт или без причины оскорблять ) <span class="rule-penalty">В легкой форме - мут от 15 минут до часа, В грубой форме - варн на 7 дней + мут до 3 часов</span></li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>Присоединяйтесь к нашему сообществу!</p>
+            <div class="footer-links">
+                <a href="https://t.me/memefemboys" target="_blank"><i class="fab fa-telegram"></i> Основной канал</a>
+                <a href="https://t.me/memefem" target="_blank"><i class="fab fa-telegram"></i> Второй канал</a>
+                <a href="https://t.me/memefemboyschat" target="_blank"><i class="fas fa-comments"></i> Чатик</a>
+                <a href="https://t.me/boost/memefemboys" target="_blank"><i class="fas fa-rocket"></i> Буст</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
